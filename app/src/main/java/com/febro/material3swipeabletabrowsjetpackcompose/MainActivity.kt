@@ -4,19 +4,15 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.ShoppingCart
-import androidx.compose.material.icons.outlined.AccountBox
 import androidx.compose.material.icons.outlined.AccountCircle
+import androidx.compose.material.icons.outlined.Add
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.ShoppingCart
 import androidx.compose.material3.*
@@ -24,6 +20,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.unit.dp
 import com.febro.material3swipeabletabrowsjetpackcompose.ui.theme.Material3SwipeableTabRowsJetpackComposeTheme
 
 
@@ -118,7 +115,48 @@ class MainActivity : ComponentActivity() {
                                 modifier = Modifier.fillMaxSize(),
                                 contentAlignment = Alignment.Center
                             ) {
-                                Text(text = tabItems[index].title)
+                                Column(
+                                    modifier = Modifier.fillMaxSize(),
+                                    verticalArrangement = Arrangement.Center,
+                                    horizontalAlignment = Alignment.CenterHorizontally
+                                ) {
+                                    // BUTTONS ACCODING TO MATERIAL 3 GUIDELINES
+                                    Text(text = tabItems[index].title)
+                                    Spacer(modifier = Modifier.padding(15.dp))
+                                    Button(onClick = { /*TODO*/ }) {
+                                        Text(text = "Create new Account")
+                                    }
+
+                                    // a second option to the main cta
+                                    OutlinedButton(onClick = { /*TODO*/ }) {
+                                        Text(text = "I have an existing account")
+                                    }
+
+                                    // e.g cta for a picture that requires button to be highlighted
+                                    ElevatedButton(onClick = { /*TODO*/ }) {
+                                        Icon(
+                                            imageVector = Icons.Outlined.Add,
+                                            contentDescription = "Add to cart",
+                                            modifier = Modifier.size(18.dp)
+                                        )
+                                        Spacer(modifier = Modifier.width(8.dp))
+                                        Text(text = "Add to cart")
+                                    }
+                                    
+                                    FilledTonalButton(onClick = { /*TODO*/ }) {
+                                        Text(text = "Open in Browser")
+                                    }
+                                    
+                                    OutlinedButton(onClick = { /*TODO*/ }) {
+                                        Text(text = "Back")
+                                    }
+                                    
+                                    // lest prominent
+                                    TextButton(onClick = { /*TODO*/ }) {
+                                        Text(text = "Learn more")
+                                    }
+                                }
+
                             }
                         }
                     }
